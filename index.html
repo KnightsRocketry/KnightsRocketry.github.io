@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Knights Rocketry</title>
     <style>
         /* CSS Variables for Colors */
         :root {
             --deep-purple: #4B0082;
             --black: #000000;
-            --light-lavender: #D1C4E9;
+            --light-lavender: #907cb6;
+            --light-purple: #b6a6d3;
             --white: #FFFFFF;
-            --electric-blue: #00BFFF;
-            --bronze: #cd7f32;
-            --gold: #ffd700;
-            --platinum: #e5e4e2;
+            --purpleglow: #4a325e;
+            --bronze: #cc80338f;
+            --gold: #ffd900a9;
+            --platinum: #97bed8;
         }
 
         /* General Styling */
@@ -27,6 +28,7 @@
             overflow-x: hidden;
         }
 
+        /* Smooth Scrolling */
         html {
             scroll-behavior: smooth;
         }
@@ -53,11 +55,6 @@
             margin-bottom: 40px;
         }
 
-        p, li {
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
         /* Hero Section */
         .hero {
             height: 100vh;
@@ -67,11 +64,6 @@
             align-items: center;
             text-align: center;
             background: linear-gradient(180deg, var(--deep-purple), var(--black));
-        }
-
-        .hero-logo {
-            max-width: 150px;
-            margin-bottom: 20px;
         }
         
         .hero .typing-text {
@@ -83,7 +75,7 @@
             display: inline-block;
             width: 3px;
             height: 3rem;
-            background-color: var(--electric-blue);
+            background-color: var(--light-lavender);
             animation: blink 1s infinite;
         }
 
@@ -109,29 +101,36 @@
         .cta-button:hover {
             background-color: var(--light-lavender);
             color: var(--deep-purple);
-            box-shadow: 0 0 20px var(--electric-blue), 0 0 30px var(--electric-blue);
+            box-shadow: 0 0 20px var(--purpleglow), 0 0 30px var(--purpleglow);
         }
-        
-        /* Re-styled from version 1 */
-        .info-grid {
+
+        /* About Section */
+        .about-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
-        /* Card styles for about section */
-        .info-card {
+
+        .about-card {
             background-color: #1a1a1a;
             padding: 25px;
             border-radius: 10px;
             border-left: 5px solid var(--deep-purple);
         }
-
-        .info-card h3 {
+        .about-card h3 {
              font-size: 1.8rem;
              margin-top: 0;
              color: var(--light-lavender);
         }
-
+        
+        /* The Challenge Section styling */
+        .challenge-content {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+       
         /* Sponsorship Tiers */
         .sponsorship-grid {
             display: grid;
@@ -144,7 +143,7 @@
             border: 1px solid #333;
             border-radius: 15px;
             padding: 30px;
-            text-align: center; /* Center aligns the button */
+            text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -153,50 +152,70 @@
 
         .tier-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 191, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(145, 0, 255, 0.5);
         }
         
         .tier-card h3 {
             font-size: 1.8rem;
-            margin-bottom: 15px;
+            margin-top: 0;
+            margin-bottom: 5px; /* Reduced margin */
+        }
+        
+        /* Style for tier price */
+        .tier-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--white);
+            margin-bottom: 20px;
         }
 
-        /* Color coded tier titles */
-        h3.bronze { color: var(--bronze); }
-        h3.gold { color: var(--gold); }
-        h3.platinum { color: var(--platinum); }
+        /* Color-coded tier titles */
+        .tier-card h3.bronze { color: var(--bronze); }
+        .tier-card h3.gold { color: var(--gold); }
+        .tier-card h3.platinum { color: var(--platinum); }
         
         .tier-card ul {
             list-style: none;
             padding: 0;
             margin: 20px 0;
             text-align: left;
-            flex-grow: 1; /* Makes sure the content above button fills space */
+            flex-grow: 1;
         }
         
         .tier-card li {
             margin-bottom: 10px;
+            font-size: 1rem;
+            line-height: 1.5;
         }
         
-        /* Contact & Footer Section */
+        /* Sponsors Section */
+        .sponsors-placeholder {
+            background-color: #1a1a1a;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px dashed #333;
+        }
+        .sponsors-placeholder p {
+            margin: 0;
+            font-style: italic;
+            color: #aaa;
+        }
+
+        /* Footer */
         footer {
             text-align: center;
             padding: 40px 20px;
             border-top: 1px solid #333;
         }
         
-        .contact-details p {
-             font-size: 1.1rem;
-             margin: 8px 0;
+        #contact-info a {
+             color: var(--light-lavender);
+             text-decoration: none;
+             transition: color 0.3s;
         }
-
-        .contact-details a {
-            color: var(--light-lavender);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .contact-details a:hover {
-            color: var(--electric-blue);
+         #contact-info a:hover {
+             color: var(--purpleglow);
         }
 
     </style>
@@ -204,31 +223,34 @@
 <body>
 
     <!-- HERO SECTION -->
-    <header class="hero">
-        <img src="https://i.ibb.co/hD2sQB1/knights-rocketry-logo.png" alt="Knights Rocketry Logo" class="hero-logo">
-        <h1 class="typing-text">
-            <span id="typing-prefix">We Are </span>
-            <span id="typed-text"></span>
-            <span class="cursor"></span>
+    <header class='hero'>
+        <img 
+            src="https://media.discordapp.net/attachments/902315002311082006/1395509979032846486/BCO.png?ex=687ab572&is=687963f2&hm=b3c8f60fe3ec45769ad0d2e57b8ec74d4fab8697722d2b8291e483755010d3d2&=&format=webp&quality=lossless&width=786&height=786" 
+            alt="Knights Rocketry Design" 
+            style="width: 500px; max-width: 90%; height: auto; display: block;"
+        />
+        <h1 class='typing-text'>
+            <span id='typing-prefix'>We Are </span>
+            <span id='typed-text'></span>
+            <span class='cursor'></span>
         </h1>
-        <p style="color: var(--light-lavender); font-size: 1.2rem; margin-top: 10px;">'26 American Rocketry Challenge</p>
-        <a href="#sponsorship" class="cta-button">Sponsor Our Mission</a>
+        <a href='#sponsorship' class='cta-button'>Sponsor Our Mission</a>
     </header>
 
     <main>
         <!-- ABOUT THE TEAM SECTION -->
-        <section id="about" class="scroll-section">
-            <h2>Learn More About Us</h2>
-            <div class="info-grid">
-                <div class="info-card">
+        <section id='about' class='scroll-section'>
+            <h2>About The Team</h2>
+            <div class='about-grid'>
+                <div class='about-card'>
                     <h3>Who We Are?</h3>
-                    <p>Knights Rocketry is a rising American Rocketry Challenge (ARC) team from Independence High School in Frisco. While new to rocketry, our members have extensive experience in other STEM competitions, including the prestigious FIRST Robotics Competition (FRC) World Championship.</p>
+                    <p>Knights Rocketry is a rising American Rocketry Challenge (ARC) team from Frisco, Texas. While new to rocketry, our team builds on a strong STEM foundation through years of involvement in the FIRST Robotics Competition (FRC), where our robotics team has qualified for the FRC World Championship in past seasons.</p>
                 </div>
-                <div class="info-card">
+                <div class='about-card'>
                     <h3>What is ARC?</h3>
                     <p>The American Rocketry Challenge is the world's largest student rocket contest. Teams design, build, and launch rockets to meet specific altitude and flight duration goals, providing hands-on experience in aerospace engineering.</p>
                 </div>
-                <div class="info-card">
+                <div class='about-card'>
                     <h3>How Can You Help?</h3>
                     <p>Sponsoring our team supports STEM education and gives your brand national visibility. Your logo on our rocket and shirts shows your commitment to innovation and inspiring the next generation of leaders.</p>
                 </div>
@@ -236,65 +258,80 @@
         </section>
 
         <!-- THE CHALLENGE SECTION -->
-        <section id="challenge" class="scroll-section">
+        <section id='challenge' class='scroll-section'>
             <h2>The Challenge</h2>
-             <div style="background-color: #1a1a1a; padding: 25px; border-radius: 10px; text-align:center;">
-                <p>This year's goal involves designing a rocket to carry one raw egg to a specific altitude, returning it to Earth safely within a precise time window. This complex task requires careful design, simulation, and rigorous real-world testing to succeed.</p>
-                <a href="https://rocketcontest.org/" target="_blank" class="cta-button">Official ARC Website</a>
+            <div class='challenge-content'>
+                <p>This year's goal involves designing a rocket to carry two raw eggs to a specific altitude, returning it to Earth safely within a precise time window. This complex task requires careful design, simulation, and rigorous real-world testing to succeed.</p>
+                <a href="https://rocketcontest.org/" target="_blank" class='cta-button'>Official ARC Website</a>
             </div>
         </section>
 
         <!-- SPONSORSHIP TIERS SECTION -->
-        <section id="sponsorship" class="scroll-section">
+        <section id='sponsorship' class='scroll-section'>
             <h2>Sponsorship Tiers</h2>
-            <div class="sponsorship-grid">
-                <div class="tier-card">
+            <div class='sponsorship-grid'>
+                <div class='tier-card'>
                     <div>
-                        <h3 class="bronze">Bronze</h3>
+                        <h3 class='bronze'>Bronze</h3>
+                        <h4 class="tier-price">$50-$99</h4>
                         <ul>
+                            <li>Small-sized logo on shirt</li>
                             <li>Your company's logo featured on our official team website.</li>
                             <li>A thank-you shout-out on our team's social media platforms.</li>
-                            <li>Subscription to our exclusive team newsletter.</li>
                         </ul>
                     </div>
-                    <a href="#contact" class="cta-button">Sponsor Now</a>
+                    <a href='#contact' class='cta-button'>Sponsor Now</a>
                 </div>
-                <div class="tier-card">
+                <div class='tier-card'>
                     <div>
-                        <h3 class="gold">Gold</h3>
+                        <h3 class='gold'>Gold</h3>
+                        <h4 class="tier-price">$100-$499</h4>
                         <ul>
                             <li>All Bronze Tier benefits.</li>
+                            <li>Medium-sized logo on banner</li>
+                            <li>Medium-sized logo on shirt</li>
                             <li>Medium-sized logo on our competition rocket.</li>
-                            <li>Your logo printed on our official team T-shirts.</li>
                         </ul>
                     </div>
-                    <a href="#contact" class="cta-button">Sponsor Now</a>
+                    <a href='#contact' class='cta-button'>Sponsor Now</a>
                 </div>
-                <div class="tier-card">
+                <div class='tier-card'>
                     <div>
-                        <h3 class="platinum">Platinum</h3>
+                        <h3 class='platinum'>Platinum</h3>
+                        <h4 class="tier-price">$500+</h4>
                         <ul>
                             <li>All Gold Tier benefits.</li>
+                            <li>Prominent logo on banner</li>
+                            <li>Rocket showcase at private events</li>
                             <li>Large logo in a prominent position on our rocket.</li>
                             <li>A framed team photo and signed certificate of appreciation.</li>
                         </ul>
                     </div>
-                    <a href="#contact" class="cta-button">Sponsor Now</a>
+                    <a href='#contact' class='cta-button'>Sponsor Now</a>
                 </div>
             </div>
         </section>
+        
+        <!-- CURRENT SPONSORS SECTION -->
+        <section id='sponsors' class='scroll-section'>
+            <h2>Our Sponsors</h2>
+             <div class='sponsors-placeholder'>
+                 <p>We are incredibly grateful for the support of our sponsors. Your logo could be here!</p>
+             </div>
+        </section>
+
     </main>
 
-    <!-- FOOTER & CONTACT -->
-    <footer id="contact">
+    <!-- FOOTER / CONTACT SECTION -->
+    <footer id='contact'>
         <h2>Contact & Support</h2>
-        <p style="margin-bottom:30px;">Have questions or want to become a sponsor? Reach out to us directly.</p>
-        <div class="contact-details">
-            <p><strong>Email:</strong> <a href="mailto:arcknightsrocketry@gmail.com">arcknightsrocketry@gmail.com</a></p>
-            <p><strong>Website:</strong> <a href="https://knightsrocketry.github.io" target="_blank">knightsrocketry.github.io</a></p>
+        <p style='max-width:600px; margin: 0 auto 30px auto;'>Have questions or want to become a sponsor? Reach out to us directly.</p>
+        <div id='contact-info'>
+            <p><strong>Email:</strong> <a href='mailto:arcknightsrocketry@gmail.com'>arcknightsrocketry@gmail.com</a></p>
+            <p><strong>Website:</strong> <a href='https://knightsrocketry.github.io' target='_blank'>knightsrocketry.github.io</a></p>
             <p><strong>Phone:</strong> 123-456-7890</p>
         </div>
-        <p style="margin-top: 40px; font-size: 0.9rem; color: #888;">© 2024 Knights Rocketry. All Rights Reserved.</p>
+        <p style='margin-top: 40px; color: #888;'>© 2025 Knights Rocketry. All Rights Reserved.</p>
     </footer>
 
     <script>
@@ -330,25 +367,26 @@
         }
         
         document.addEventListener('DOMContentLoaded', () => {
-            // Wait for the DOM to be ready
             if(words.length) setTimeout(type, newWordDelay + 250);
-            
-            // Logic for Scroll-in-View Animation
-            const sections = document.querySelectorAll('.scroll-section');
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            
-            sections.forEach(section => {
-                observer.observe(section);
-            });
         });
+        
+        // JS for Scroll-in-View Animation
+        const sections = document.querySelectorAll('.scroll-section');
+        
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
     </script>
 </body>
 </html>
