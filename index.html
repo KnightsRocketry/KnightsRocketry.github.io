@@ -1,0 +1,409 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Knights Rocketry</title>
+    <style>
+        /* CSS Variables for Colors */
+        :root {
+            --deep-purple: #4B0082;
+            --black: #000000;
+            --light-lavender: #D1C4E9;
+            --white: #FFFFFF;
+            --electric-blue: #00BFFF;
+        }
+
+        /* General Styling */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Section Styling & Fade-in Animation */
+        section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--light-lavender);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(180deg, var(--deep-purple), var(--black));
+        }
+
+        .hero-logo {
+            /* Placeholder for an animated logo */
+            width: 150px;
+            height: 150px;
+            background-color: var(--light-lavender);
+            border-radius: 50%;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--deep-purple);
+        }
+        
+        .hero .typing-text {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero .typing-text .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 3rem;
+            background-color: var(--electric-blue);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 30px;
+            border: 2px solid var(--light-lavender);
+            border-radius: 50px;
+            background-color: transparent;
+            color: var(--light-lavender);
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--light-lavender);
+            color: var(--deep-purple);
+            box-shadow: 0 0 20px var(--electric-blue), 0 0 30px var(--electric-blue);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .about-card {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid var(--deep-purple);
+        }
+        
+        /* Rocket Project Section */
+        /* Developer Note: A true parallax effect here would require more advanced JS or CSS techniques. */
+        .project-content {
+            text-align: center;
+        }
+        
+        .project-diagram {
+             width: 80%;
+             max-width: 400px;
+             height: auto;
+             margin: 20px auto;
+             background-color: #333;
+             padding: 20px;
+             border-radius: 10px;
+             border: 1px solid var(--light-lavender);
+        }
+
+        /* Sponsorship Tiers */
+        .sponsorship-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .tier-card {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tier-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 191, 255, 0.5);
+        }
+        
+        .tier-card h3 {
+            color: var(--light-lavender);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .tier-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .tier-card li {
+            margin-bottom: 10px;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #222;
+            color: var(--white);
+            font-size: 1rem;
+        }
+        
+        .contact-form button {
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--deep-purple);
+            color: var(--white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form button:hover {
+            background-color: var(--electric-blue);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #333;
+        }
+
+        .social-icons a {
+            margin: 0 15px;
+            color: var(--white);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--electric-blue);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <header class='hero'>
+        <!-- Developer Note: Replace with your actual animated SVG/PNG logo -->
+        <div class='hero-logo'>KR</div>
+        <h1 class='typing-text'>
+            <span id='typing-prefix'>We Are </span>
+            <span id='typed-text'></span>
+            <span class='cursor'></span>
+        </h1>
+        <a href='#sponsorship' class='cta-button'>Sponsor Our Mission</a>
+    </header>
+
+    <main>
+        <!-- ABOUT THE TEAM SECTION -->
+        <section id='about' class='scroll-section'>
+            <h2>About The Team</h2>
+            <div class='about-grid'>
+                <div class='about-card'>
+                    <h3>Our Mission</h3>
+                    <p>To design, build, and launch a high-performance rocket, fostering innovation and inspiring the next generation of STEM leaders.</p>
+                </div>
+                <div class='about-card'>
+                    <h3>The Competition</h3>
+                    <p>We are competing in the Aerospace/Rocketry Challenge 2026, a prestigious event that tests our engineering, teamwork, and execution skills.</p>
+                </div>
+                <div class='about-card'>
+                    <h3>Achievements</h3>
+                    <p>Founded in 2023, we have already won regional design awards and successfully completed three prototype test launches.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- OUR ROCKET PROJECT SECTION -->
+        <section id='project' class='scroll-section'>
+            <h2>Our Rocket Project</h2>
+            <div class='project-content'>
+                <p>Our latest model, the 'Nebula-1', features a custom-built avionics system and a hybrid propulsion engine. Below is a simplified diagram of its core components.</p>
+                <!-- Developer Note: Replace with actual photos, diagrams, or an embedded video player -->
+                <div class='project-diagram'>
+                    <p><strong>[Animated Diagram or Rocket Photo Placeholder]</strong></p>
+                    <p>1. Nose Cone & Avionics Bay</p>
+                    <p>2. Payload Compartment</p>
+                    <p>3. Recovery System (Parachute)</p>
+                    <p>4. Fuselage & Fins</p>
+                    <p>5. Hybrid Engine Assembly</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SPONSORSHIP TIERS SECTION -->
+        <section id='sponsorship' class='scroll-section'>
+            <h2>Sponsorship Tiers</h2>
+            <div class='sponsorship-grid'>
+                <div class='tier-card'>
+                    <h3>Silver</h3>
+                    <ul>
+                        <li>Logo on our website</li>
+                        <li>Social media shout-out</li>
+                        <li>Team newsletter subscription</li>
+                    </ul>
+                    <a href='#contact' class='cta-button'>Sponsor Now</a>
+                </div>
+                <div class='tier-card'>
+                    <h3>Gold</h3>
+                    <ul>
+                        <li>All Silver benefits</li>
+                        <li>Medium-sized logo on the rocket</li>
+                        <li>Invitation to test launches</li>
+                    </ul>
+                    <a href='#contact' class='cta-button'>Sponsor Now</a>
+                </div>
+                <div class='tier-card'>
+                    <h3>Platinum</h3>
+                    <ul>
+                        <li>All Gold benefits</li>
+                        <li>Large logo on the rocket</li>
+                        <li>Prominent banner at our events</li>
+                        <li>Direct collaboration opportunities</li>
+                    </ul>
+                    <a href='#contact' class='cta-button'>Sponsor Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT & SUPPORT SECTION -->
+        <section id='contact' class='scroll-section'>
+            <h2>Contact & Support</h2>
+            <p style='text-align:center; max-width:600px; margin: 0 auto 30px auto;'>Have questions or want to become a sponsor? Fill out the form below or email us directly.</p>
+            <!-- Developer Note: For a functional form, you'll need a backend or a service like Netlify Forms or Formspree. -->
+            <form class='contact-form' action='#' method='POST'>
+                <input type='text' name='name' placeholder='Your Name' required>
+                <input type='email' name='email' placeholder='Your Email' required>
+                <textarea name='message' rows='5' placeholder='Your Message' required></textarea>
+                <button type='submit'>Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class='social-icons'>
+            <!-- Replace # with your actual social media links -->
+            <a href='#' title='Twitter'>X</a>
+            <a href='#' title='Instagram'>IG</a>
+            <a href='#' title='LinkedIn'>IN</a>
+        </div>
+        <p>Email: <a href='mailto:contact@knightsrocketry.edu'>contact@knightsrocketry.edu</a></p>
+        <p>© 2024 Knights Rocketry. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // JS for Typing Animation
+        const typedTextSpan = document.getElementById('typed-text');
+        const words = ['Engineers.', 'Explorers.', 'Innovators.', 'Future Leaders.'];
+        const typingDelay = 100;
+        const erasingDelay = 50;
+        const newWordDelay = 2000;
+        let wordIndex = 0;
+        let charIndex = 0;
+
+        function type() {
+            if (charIndex < words[wordIndex].length) {
+                typedTextSpan.textContent += words[wordIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingDelay);
+            } else {
+                setTimeout(erase, newWordDelay);
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                typedTextSpan.textContent = words[wordIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, erasingDelay);
+            } else {
+                wordIndex++;
+                if (wordIndex >= words.length) wordIndex = 0;
+                setTimeout(type, typingDelay + 500);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            if(words.length) setTimeout(type, newWordDelay + 250);
+        });
+        
+        // JS for Scroll-in-View Animation
+        const sections = document.querySelectorAll('.scroll-section');
+        
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+    </script>
+</body>
+</html>
+
