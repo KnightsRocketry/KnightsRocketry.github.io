@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knights Rocketry</title>
     <style>
-        /* CSS Variables for Colors from Packet */
+        /* CSS Variables for Colors */
         :root {
             --deep-purple: #4B0082;
-            --black: #0F0F0F; /* Darker black for depth */
+            --black: #000000;
             --light-lavender: #D1C4E9;
             --white: #FFFFFF;
             --electric-blue: #00BFFF;
@@ -22,7 +22,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--deep-purple);
+            background-color: var(--black);
             color: var(--white);
             overflow-x: hidden;
         }
@@ -31,68 +31,14 @@
             scroll-behavior: smooth;
         }
 
-        /* Pre-loader with Rocket Animation */
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--black);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            transition: opacity 0.75s ease;
-        }
-
-        .loader-rocket {
-            width: 150px;
-            animation: flyIn 2s ease-out forwards;
-        }
-
-        @keyframes flyIn {
-            0% {
-                transform: translate(-100vw, 100vh) rotate(-45deg);
-                opacity: 0;
-            }
-            70% {
-                transform: translate(0, 0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                 transform: translate(0, 0) rotate(0deg);
-                opacity: 1;
-            }
-        }
-        
-        .loader.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-
-        /* Main Content Styling */
-        #main-content {
-            display: none; /* Hidden until loader is finished */
-        }
-        
         /* Section Styling & Fade-in Animation */
         section {
-            padding: 80px 20px;
-            max-width: 1100px;
+            padding: 60px 20px;
+            max-width: 1000px;
             margin: 0 auto;
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        
-        section:nth-of-type(odd) {
-            background-color: var(--deep-purple);
-        }
-
-        section:nth-of-type(even) {
-            background-color: #3a0066; /* Slightly lighter purple for contrast */
         }
 
         section.is-visible {
@@ -101,12 +47,12 @@
         }
 
         h2 {
-            font-size: 3rem;
+            font-size: 2.5rem;
+            color: var(--light-lavender);
             text-align: center;
-            margin-bottom: 50px;
-            font-weight: 700;
+            margin-bottom: 40px;
         }
-        
+
         p, li {
             font-size: 1.1rem;
             line-height: 1.6;
@@ -120,38 +66,42 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(180deg, var(--deep-purple), #1a0033);
-            padding: 20px;
-        }
-        
-        .hero img.logo {
-             max-width: 200px;
-             margin-bottom: 20px;
-             /* Add your fade-in animation here */
+            background: linear-gradient(180deg, var(--deep-purple), var(--black));
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 800;
+        .hero-logo {
+            max-width: 150px;
+            margin-bottom: 20px;
         }
         
-        .hero p {
-            font-size: 1.5rem;
-            color: var(--light-lavender);
+        .hero .typing-text {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero .typing-text .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 3rem;
+            background-color: var(--electric-blue);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
         /* CTA Button */
         .cta-button {
             display: inline-block;
-            margin-top: 25px;
-            padding: 12px 28px;
+            margin-top: 30px;
+            padding: 15px 30px;
             border: 2px solid var(--light-lavender);
             border-radius: 50px;
             background-color: transparent;
             color: var(--light-lavender);
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1.2rem;
             text-decoration: none;
             transition: all 0.3s ease;
         }
@@ -162,25 +112,24 @@
             box-shadow: 0 0 20px var(--electric-blue), 0 0 30px var(--electric-blue);
         }
         
-        /* Info Grid Section (Who, What, How) */
+        /* Re-styled from version 1 */
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            text-align: left;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
-
+        /* Card styles for about section */
         .info-card {
-            background: rgba(0, 0, 0, 0.2);
+            background-color: #1a1a1a;
             padding: 25px;
             border-radius: 10px;
-            border-left: 5px solid var(--electric-blue);
+            border-left: 5px solid var(--deep-purple);
         }
-        
+
         .info-card h3 {
-            font-size: 1.8rem;
-            margin-top: 0;
-            color: var(--light-lavender);
+             font-size: 1.8rem;
+             margin-top: 0;
+             color: var(--light-lavender);
         }
 
         /* Sponsorship Tiers */
@@ -192,9 +141,10 @@
         
         .tier-card {
             background-color: #1a1a1a;
+            border: 1px solid #333;
             border-radius: 15px;
             padding: 30px;
-            text-align: center;
+            text-align: center; /* Center aligns the button */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -203,208 +153,202 @@
 
         .tier-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 191, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 191, 255, 0.5);
         }
         
         .tier-card h3 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 15px;
         }
-        
-        /* Color coded text */
-        .tier-card h3.bronze { color: var(--bronze); }
-        .tier-card h3.gold { color: var(--gold); }
-        .tier-card h3.platinum { color: var(--platinum); }
+
+        /* Color coded tier titles */
+        h3.bronze { color: var(--bronze); }
+        h3.gold { color: var(--gold); }
+        h3.platinum { color: var(--platinum); }
         
         .tier-card ul {
             list-style: none;
             padding: 0;
             margin: 20px 0;
             text-align: left;
-            flex-grow: 1;
+            flex-grow: 1; /* Makes sure the content above button fills space */
         }
         
         .tier-card li {
             margin-bottom: 10px;
-            padding-left: 1.5em;
-            position: relative;
         }
         
-        .tier-card li::before {
-            content: '✓';
-            color: var(--electric-blue);
-            position: absolute;
-            left: 0;
-        }
-
-        /* Footer */
+        /* Contact & Footer Section */
         footer {
-            background-color: var(--black);
             text-align: center;
-            padding: 50px 20px;
+            padding: 40px 20px;
+            border-top: 1px solid #333;
+        }
+        
+        .contact-details p {
+             font-size: 1.1rem;
+             margin: 8px 0;
         }
 
-        .contact-info p {
-            font-size: 1.2rem;
-            margin: 10px 0;
-        }
-
-        .contact-info a {
+        .contact-details a {
             color: var(--light-lavender);
             text-decoration: none;
             transition: color 0.3s;
         }
-        
-        .contact-info a:hover {
+        .contact-details a:hover {
             color: var(--electric-blue);
         }
-        
+
     </style>
 </head>
 <body>
 
-    <!-- PRE-LOADER -->
-    <div class="loader">
-        <!-- Image provided by user -->
-        <img src="https://i.ibb.co/6PFrFwK/rocket-for-loader.png" alt="Knights Rocketry Rocket" class="loader-rocket">
-    </div>
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <img src="https://i.ibb.co/hD2sQB1/knights-rocketry-logo.png" alt="Knights Rocketry Logo" class="hero-logo">
+        <h1 class="typing-text">
+            <span id="typing-prefix">We Are </span>
+            <span id="typed-text"></span>
+            <span class="cursor"></span>
+        </h1>
+        <p style="color: var(--light-lavender); font-size: 1.2rem; margin-top: 10px;">'26 American Rocketry Challenge</p>
+        <a href="#sponsorship" class="cta-button">Sponsor Our Mission</a>
+    </header>
 
-    <!-- MAIN WEBSITE CONTENT (Initially hidden) -->
-    <div id="main-content">
-        <!-- HERO SECTION -->
-        <header class="hero">
-            <!-- Image provided by user -->
-            <img src="https://i.ibb.co/hD2sQB1/knights-rocketry-logo.png" alt="Knights Rocketry Logo" class="logo">
-            <h1>KNIGHTS ROCKETRY</h1>
-            <p>'26 American Rocketry Challenge</p>
-            <a href="#sponsorship" class="cta-button">Sponsor Our Mission</a>
-        </header>
-
-        <main>
-            <!-- ABOUT SECTION (From Packet) -->
-            <section id="about" class="scroll-section">
-                <h2>Learn More About Us</h2>
-                <div class="info-grid">
-                    <div class="info-card">
-                        <h3>Who We Are?</h3>
-                        <p>Knights Rocketry is a rising American Rocketry Challenge (ARC) team from Independence High School in Frisco. While we are a new rocketry team, our members have extensive experience in other prestigious STEM competitions, including bringing a team to the FIRST Robotics Competition (FRC) World Championship.</p>
-                    </div>
-                    <div class="info-card">
-                        <h3>What is ARC?</h3>
-                        <p>The American Rocketry Challenge is the world's largest student rocket contest. [4] Teams design, build, and launch rockets to meet specific altitude and flight duration goals, providing hands-on experience in aerospace engineering. [3, 5] The top 100 teams compete at the National Finals for prizes and recognition. [4]</p>
-                    </div>
-                    <div class="info-card">
-                        <h3>How Can You Help?</h3>
-                        <p>Sponsoring our team supports local STEM education and provides your brand with visibility. Your logo on our rocket and team shirts showcases your commitment to inspiring the next generation of innovators and leaders in science and technology.</p>
-                    </div>
+    <main>
+        <!-- ABOUT THE TEAM SECTION -->
+        <section id="about" class="scroll-section">
+            <h2>Learn More About Us</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Who We Are?</h3>
+                    <p>Knights Rocketry is a rising American Rocketry Challenge (ARC) team from Independence High School in Frisco. While new to rocketry, our members have extensive experience in other STEM competitions, including the prestigious FIRST Robotics Competition (FRC) World Championship.</p>
                 </div>
-            </section>
-            
-             <!-- THE CHALLENGE SECTION -->
-            <section id="challenge" class="scroll-section">
-                <h2>The Challenge</h2>
-                 <div class="info-card" style="text-align: center; max-width: 800px; margin: 0 auto; border-left: none; border-top: 5px solid var(--electric-blue);">
-                    <h3>'26 Competition Basics</h3>
-                    <p>This year's goal involves designing a rocket to carry a payload of raw eggs to a specific altitude and land within a precise time window without damaging the payload. [2, 6] This complex task requires careful planning, aerodynamic simulation, and rigorous testing.</p>
-                    <a href="https://rocketcontest.org/" target="_blank" class="cta-button">Official ARC Website</a>
+                <div class="info-card">
+                    <h3>What is ARC?</h3>
+                    <p>The American Rocketry Challenge is the world's largest student rocket contest. Teams design, build, and launch rockets to meet specific altitude and flight duration goals, providing hands-on experience in aerospace engineering.</p>
                 </div>
-            </section>
-
-            <!-- SPONSORSHIP TIERS SECTION -->
-            <section id="sponsorship" class="scroll-section">
-                <h2>Sponsorship Tiers</h2>
-                <div class="sponsorship-grid">
-                    <div class="tier-card">
-                        <div>
-                            <h3 class="bronze">Bronze</h3>
-                            <ul>
-                                <li>Your company's logo featured on our official team website.</li>
-                                <li>A thank-you shout-out on our team's social media platforms.</li>
-                                <li>Subscription to our exclusive team newsletter with project updates.</li>
-                            </ul>
-                        </div>
-                        <a href="#contact" class="cta-button">Sponsor Now</a>
-                    </div>
-                    <div class="tier-card">
-                         <div>
-                            <h3 class="gold">Gold</h3>
-                            <ul>
-                                <li>All Bronze Tier benefits.</li>
-                                <li>Medium-sized logo placed prominently on our competition rocket.</li>
-                                <li>Your logo printed on our official team T-shirts worn at all events.</li>
-                                <li>An invitation to attend one of our official test launches.</li>
-                            </ul>
-                        </div>
-                        <a href="#contact" class="cta-button">Sponsor Now</a>
-                    </div>
-                    <div class="tier-card">
-                         <div>
-                            <h3 class="platinum">Platinum</h3>
-                            <ul>
-                                <li>All Gold Tier benefits.</li>
-                                <li>Large-sized logo featured in the most prominent position on our rocket.</li>
-                                <li>A framed team photo and signed certificate of appreciation.</li>
-                                <li>A special feature article about your company in our newsletter.</li>
-                            </ul>
-                        </div>
-                        <a href="#contact" class="cta-button">Sponsor Now</a>
-                    </div>
+                <div class="info-card">
+                    <h3>How Can You Help?</h3>
+                    <p>Sponsoring our team supports STEM education and gives your brand national visibility. Your logo on our rocket and shirts shows your commitment to innovation and inspiring the next generation of leaders.</p>
                 </div>
-            </section>
-
-        </main>
-
-        <!-- FOOTER / CONTACT -->
-        <footer id="contact">
-            <h2>Thank you!</h2>
-             <img src="https://i.ibb.co/hD2sQB1/knights-rocketry-logo.png" alt="Knights Rocketry Logo" class="logo" style="max-width: 150px; margin-bottom: 30px;">
-            <p style="font-size:1.2rem; max-width: 500px; margin: 0 auto 30px auto;">We hope you are interested in joining our mission.</p>
-            <div class="contact-info">
-                <p><strong>Email:</strong> <a href="mailto:arcknightsrocketry@gmail.com">arcknightsrocketry@gmail.com</a></p>
-                <p><strong>Website:</strong> <a href="https://knightsrocketry.github.io" target="_blank">knightsrocketry.github.io</a></p>
-                <p><strong>Phone:</strong> 123-456-7890</p>
             </div>
-            <p style="margin-top: 40px; color: #aaa;">© 2024 Knights Rocketry. All Rights Reserved.</p>
-        </footer>
-    </div>
+        </section>
+
+        <!-- THE CHALLENGE SECTION -->
+        <section id="challenge" class="scroll-section">
+            <h2>The Challenge</h2>
+             <div style="background-color: #1a1a1a; padding: 25px; border-radius: 10px; text-align:center;">
+                <p>This year's goal involves designing a rocket to carry one raw egg to a specific altitude, returning it to Earth safely within a precise time window. This complex task requires careful design, simulation, and rigorous real-world testing to succeed.</p>
+                <a href="https://rocketcontest.org/" target="_blank" class="cta-button">Official ARC Website</a>
+            </div>
+        </section>
+
+        <!-- SPONSORSHIP TIERS SECTION -->
+        <section id="sponsorship" class="scroll-section">
+            <h2>Sponsorship Tiers</h2>
+            <div class="sponsorship-grid">
+                <div class="tier-card">
+                    <div>
+                        <h3 class="bronze">Bronze</h3>
+                        <ul>
+                            <li>Your company's logo featured on our official team website.</li>
+                            <li>A thank-you shout-out on our team's social media platforms.</li>
+                            <li>Subscription to our exclusive team newsletter.</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="cta-button">Sponsor Now</a>
+                </div>
+                <div class="tier-card">
+                    <div>
+                        <h3 class="gold">Gold</h3>
+                        <ul>
+                            <li>All Bronze Tier benefits.</li>
+                            <li>Medium-sized logo on our competition rocket.</li>
+                            <li>Your logo printed on our official team T-shirts.</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="cta-button">Sponsor Now</a>
+                </div>
+                <div class="tier-card">
+                    <div>
+                        <h3 class="platinum">Platinum</h3>
+                        <ul>
+                            <li>All Gold Tier benefits.</li>
+                            <li>Large logo in a prominent position on our rocket.</li>
+                            <li>A framed team photo and signed certificate of appreciation.</li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="cta-button">Sponsor Now</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER & CONTACT -->
+    <footer id="contact">
+        <h2>Contact & Support</h2>
+        <p style="margin-bottom:30px;">Have questions or want to become a sponsor? Reach out to us directly.</p>
+        <div class="contact-details">
+            <p><strong>Email:</strong> <a href="mailto:arcknightsrocketry@gmail.com">arcknightsrocketry@gmail.com</a></p>
+            <p><strong>Website:</strong> <a href="https://knightsrocketry.github.io" target="_blank">knightsrocketry.github.io</a></p>
+            <p><strong>Phone:</strong> 123-456-7890</p>
+        </div>
+        <p style="margin-top: 40px; font-size: 0.9rem; color: #888;">© 2024 Knights Rocketry. All Rights Reserved.</p>
+    </footer>
 
     <script>
-        // JS for Pre-loader
-        window.addEventListener('load', () => {
-            const loader = document.querySelector('.loader');
-            const mainContent = document.getElementById('main-content');
+        // JS for Typing Animation
+        const typedTextSpan = document.getElementById('typed-text');
+        const words = ['Engineers.', 'Explorers.', 'Innovators.', 'Future Leaders.'];
+        const typingDelay = 100;
+        const erasingDelay = 50;
+        const newWordDelay = 2000;
+        let wordIndex = 0;
+        let charIndex = 0;
 
-            setTimeout(() => {
-                loader.classList.add('hidden');
-                mainContent.style.display = 'block';
-                 // Trigger the animations for sections now visible on load
-                const sectionsOnLoad = document.querySelectorAll('.scroll-section');
-                sectionsOnLoad.forEach(section => {
-                    // Check if the section is already in the viewport
-                     if(section.getBoundingClientRect().top < window.innerHeight) {
-                        section.classList.add('is-visible');
+        function type() {
+            if (charIndex < words[wordIndex].length) {
+                typedTextSpan.textContent += words[wordIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingDelay);
+            } else {
+                setTimeout(erase, newWordDelay);
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                typedTextSpan.textContent = words[wordIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, erasingDelay);
+            } else {
+                wordIndex++;
+                if (wordIndex >= words.length) wordIndex = 0;
+                setTimeout(type, typingDelay + 500);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Wait for the DOM to be ready
+            if(words.length) setTimeout(type, newWordDelay + 250);
+            
+            // Logic for Scroll-in-View Animation
+            const sections = document.querySelectorAll('.scroll-section');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
                     }
                 });
-            }, 2200); // Duration matches animation + a slight delay
-        });
-        
-        // JS for Scroll-in-View Animation
-        const sections = document.querySelectorAll('.scroll-section');
-        
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
+            }, {
+                threshold: 0.1
             });
-        }, {
-            threshold: 0.1
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
         });
-        
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
     </script>
 </body>
 </html>
