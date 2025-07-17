@@ -5,240 +5,62 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Knights Rocketry</title>
     <style>
-        /* CSS Variables for Colors */
-        :root {
-            --deep-purple: #4B0082;
-            --black: #000000;
-            --light-lavender: #907cb6;
-            --light-purple: #b6a6d3;
-            --white: #FFFFFF;
-            --purpleglow: #4a325e;
-            --bronze: #cc80338f;
-            --gold: #ffd900a9;
-            --platinum: #97bed8;
-        }
-
-        /* General Styling */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--black);
-            color: var(--white);
-            overflow-x: hidden;
-        }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Section Styling & Fade-in Animation */
-        section {
-            padding: 60px 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            color: var(--light-lavender);
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(180deg, var(--deep-purple), var(--black));
-        }
-        
-        .hero .typing-text {
-            font-size: 3rem;
-            font-weight: bold;
-        }
-
-        .hero .typing-text .cursor {
-            display: inline-block;
-            width: 3px;
-            height: 3rem;
-            background-color: var(--light-lavender);
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        /* CTA Button */
-        .cta-button {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 30px;
-            border: 2px solid var(--light-lavender);
-            border-radius: 50px;
-            background-color: transparent;
-            color: var(--light-lavender);
-            font-size: 1.2rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background-color: var(--light-lavender);
-            color: var(--deep-purple);
-            box-shadow: 0 0 20px var(--purpleglow), 0 0 30px var(--purpleglow);
-        }
-
-        /* About Section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .about-card {
-            background-color: #1a1a1a;
-            padding: 25px;
-            border-radius: 10px;
-            border-left: 5px solid var(--deep-purple);
-        }
-        .about-card h3 {
-             font-size: 1.8rem;
-             margin-top: 0;
-             color: var(--light-lavender);
-        }
-        
-        /* The Challenge Section styling */
-        .challenge-content {
-            background-color: #1a1a1a;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-        }
-       
-        /* Sponsorship Tiers */
-        .sponsorship-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .tier-card {
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .tier-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(145, 0, 255, 0.5);
-        }
-        
-        .tier-card h3 {
-            font-size: 1.8rem;
-            margin-top: 0;
-            margin-bottom: 5px; /* Reduced margin */
-        }
-        
-        /* Style for tier price */
-        .tier-price {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--white);
-            margin-bottom: 20px;
-        }
-
-        /* Color-coded tier titles */
+        :root { --deep-purple: #4B0082; --black: #000000; --light-lavender: #907cb6; --light-purple: #b6a6d3; --white: #FFFFFF; --purpleglow: #4a325e; --bronze: #cc80338f; --gold: #ffd900a9; --platinum: #97bed8; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; margin: 0; padding: 0; background-color: var(--black); color: var(--white); overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
+        .navbar {position: fixed; width: 100%; top: 0; left: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; box-sizing: border-box; }
+        .navbar .brand { font-size: 1.5rem; font-weight: 600; color: var(--white); text-decoration: none; letter-spacing: 1px; }
+        .navbar .nav-links a { color: var(--white); text-decoration: none; margin: 0 15px; font-size: 1rem; font-weight: 400; transition: color 0.3s ease; }
+        .navbar .nav-links a:hover, .navbar .nav-links a.active { color: var(--light-lavender); }
+        section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        section.is-visible { opacity: 1; transform: translateY(0); }
+        h2 { font-size: 2.5rem; color: var(--light-lavender); text-align: center; margin-bottom: 40px; }
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(180deg, var(--deep-purple), var(--black)); padding-top: 60px; }
+        .hero .typing-text { font-size: 3rem; font-weight: bold; }
+        .hero .typing-text .cursor { display: inline-block; width: 3px; height: 3rem; background-color: var(--light-lavender); animation: blink 1s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .cta-button { display: inline-block; margin-top: 30px; padding: 15px 30px; border: 2px solid var(--light-lavender); border-radius: 50px; background-color: transparent; color: var(--light-lavender); font-size: 1.2rem; text-decoration: none; transition: all 0.3s ease; }
+        .cta-button:hover { background-color: var(--light-lavender); color: var(--deep-purple); box-shadow: 0 0 20px var(--purpleglow), 0 0 30px var(--purpleglow); }
+        .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .about-card { background-color: #1a1a1a; padding: 25px; border-radius: 10px; border-left: 5px solid var(--deep-purple); }
+        .about-card h3 { font-size: 1.8rem; margin-top: 0; color: var(--light-lavender); }
+        .challenge-content, .blog-cta-content { background-color: #1a1a1a; padding: 30px; border-radius: 10px; text-align: center; }
+        .sponsorship-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .tier-card { background-color: #1a1a1a; border: 1px solid #333; border-radius: 15px; padding: 30px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; }
+        .tier-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(145, 0, 255, 0.5); }
+        .tier-card h3 { font-size: 1.8rem; margin-top: 0; margin-bottom: 5px; }
+        .tier-price { font-size: 2rem; font-weight: bold; color: var(--white); margin-bottom: 20px; }
         .tier-card h3.bronze { color: var(--bronze); }
         .tier-card h3.gold { color: var(--gold); }
         .tier-card h3.platinum { color: var(--platinum); }
-        
-        .tier-card ul {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-            text-align: left;
-            flex-grow: 1;
-        }
-        
-        .tier-card li {
-            margin-bottom: 10px;
-            font-size: 1rem;
-            line-height: 1.5;
-        }
-        
-        /* Sponsors Section */
-        .sponsors-placeholder {
-            background-color: #1a1a1a;
-            padding: 40px;
-            border-radius: 10px;
-            text-align: center;
-            border: 2px dashed #333;
-        }
-        .sponsors-placeholder p {
-            margin: 0;
-            font-style: italic;
-            color: #aaa;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid #333;
-        }
-        
-        #contact-info a {
-             color: var(--light-lavender);
-             text-decoration: none;
-             transition: color 0.3s;
-        }
-         #contact-info a:hover {
-             color: var(--purpleglow);
-        }
-
+        .tier-card ul { list-style: none; padding: 0; margin: 20px 0; text-align: left; flex-grow: 1; }
+        .tier-card li { margin-bottom: 10px; font-size: 1rem; line-height: 1.5; }
+        .sponsors-placeholder { background-color: #1a1a1a; padding: 40px; border-radius: 10px; text-align: center; border: 2px dashed #333; }
+        .sponsors-placeholder p { margin: 0; font-style: italic; color: #aaa; }
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid #333; }
+        #contact-info a { color: var(--light-lavender); text-decoration: none; transition: color 0.3s; }
+        #contact-info a:hover { color: var(--purpleglow); }
     </style>
 </head>
 <body>
 
-    <!-- HERO SECTION -->
+    <nav class="navbar">
+        <a href="index.html" class="brand">KNIGHTS ROCKETRY</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#sponsorship">Sponsorship</a>
+            <a href="blog.html">Blog</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
     <header class='hero'>
-        <img 
-            src="https://media.discordapp.net/attachments/902315002311082006/1395509979032846486/BCO.png?ex=687ab572&is=687963f2&hm=b3c8f60fe3ec45769ad0d2e57b8ec74d4fab8697722d2b8291e483755010d3d2&=&format=webp&quality=lossless&width=786&height=786" 
-            alt="Knights Rocketry Design" 
-            style="width: 500px; max-width: 90%; height: auto; display: block;"
-        />
-        <h1 class='typing-text'>
-            <span id='typing-prefix'>We Are </span>
-            <span id='typed-text'></span>
-            <span class='cursor'></span>
-        </h1>
+        <img src="https://media.discordapp.net/attachments/902315002311082006/1395509979032846486/BCO.png?ex=687ab572&is=687963f2&hm=b3c8f60fe3ec45769ad0d2e57b8ec74d4fab8697722d2b8291e483755010d3d2&=&format=webp&quality=lossless&width=786&height=786" alt="Knights Rocketry Design" style="width: 500px; max-width: 90%; height: auto; display: block;" />
+        <h1 class='typing-text'><span id='typing-prefix'>We Are </span><span id='typed-text'></span><span class='cursor'></span></h1>
         <a href='#sponsorship' class='cta-button'>Sponsor Our Mission</a>
     </header>
 
     <main>
-        <!-- ABOUT THE TEAM SECTION -->
         <section id='about' class='scroll-section'>
             <h2>About The Team</h2>
             <div class='about-grid'>
@@ -256,8 +78,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- THE CHALLENGE SECTION -->
         <section id='challenge' class='scroll-section'>
             <h2>The Challenge</h2>
             <div class='challenge-content'>
@@ -265,128 +85,57 @@
                 <a href="https://rocketcontest.org/" target="_blank" class='cta-button'>Official ARC Website</a>
             </div>
         </section>
-
-        <!-- SPONSORSHIP TIERS SECTION -->
         <section id='sponsorship' class='scroll-section'>
             <h2>Sponsorship Tiers</h2>
             <div class='sponsorship-grid'>
                 <div class='tier-card'>
                     <div>
-                        <h3 class='bronze'>Bronze</h3>
-                        <h4 class="tier-price">$50-$99</h4>
-                        <ul>
-                            <li>Small-sized logo on shirt</li>
-                            <li>Your company's logo featured on our official team website.</li>
-                            <li>A thank-you shout-out on our team's social media platforms.</li>
-                        </ul>
-                    </div>
-                    <a href='#contact' class='cta-button'>Sponsor Now</a>
+                        <h3 class='bronze'>Bronze</h3><h4 class="tier-price">$50-$99</h4>
+                        <ul><li>Small-sized logo on shirt</li><li>Your company's logo featured on our official team website.</li><li>A thank-you shout-out on our team's social media platforms.</li></ul>
+                    </div><a href='#contact' class='cta-button'>Sponsor Now</a>
                 </div>
                 <div class='tier-card'>
                     <div>
-                        <h3 class='gold'>Gold</h3>
-                        <h4 class="tier-price">$100-$499</h4>
-                        <ul>
-                            <li>All Bronze Tier benefits.</li>
-                            <li>Medium-sized logo on banner</li>
-                            <li>Medium-sized logo on shirt</li>
-                            <li>Medium-sized logo on our competition rocket.</li>
-                        </ul>
-                    </div>
-                    <a href='#contact' class='cta-button'>Sponsor Now</a>
+                        <h3 class='gold'>Gold</h3><h4 class="tier-price">$100-$499</h4>
+                        <ul><li>All Bronze Tier benefits.</li><li>Medium-sized logo on banner</li><li>Medium-sized logo on shirt</li><li>Medium-sized logo on our competition rocket.</li></ul>
+                    </div><a href='#contact' class='cta-button'>Sponsor Now</a>
                 </div>
                 <div class='tier-card'>
                     <div>
-                        <h3 class='platinum'>Platinum</h3>
-                        <h4 class="tier-price">$500+</h4>
-                        <ul>
-                            <li>All Gold Tier benefits.</li>
-                            <li>Prominent logo on banner</li>
-                            <li>Rocket showcase at private events</li>
-                            <li>Large logo in a prominent position on our rocket.</li>
-                            <li>A framed team photo and signed certificate of appreciation.</li>
-                        </ul>
-                    </div>
-                    <a href='#contact' class='cta-button'>Sponsor Now</a>
+                        <h3 class='platinum'>Platinum</h3><h4 class="tier-price">$500+</h4>
+                        <ul><li>All Gold Tier benefits.</li><li>Prominent logo on banner</li><li>Rocket showcase at private events</li><li>Large logo in a prominent position on our rocket.</li><li>A framed team photo and signed certificate of appreciation.</li></ul>
+                    </div><a href='#contact' class='cta-button'>Sponsor Now</a>
                 </div>
             </div>
         </section>
-        
-        <!-- CURRENT SPONSORS SECTION -->
         <section id='sponsors' class='scroll-section'>
-            <h2>Our Sponsors</h2>
-             <div class='sponsors-placeholder'>
-                 <p>We are incredibly grateful for the support of our sponsors. Your logo could be here!</p>
-             </div>
+            <h2>Our Sponsors</h2><div class='sponsors-placeholder'><p>We are incredibly grateful for the support of our sponsors. Your logo could be here!</p></div>
         </section>
-
+        <section id='blog-cta' class='scroll-section'>
+            <h2>Latest Updates</h2><div class='blog-cta-content'><p>Follow our journey from design to launch! We post regular updates on our progress, challenges, and successes.</p><a href="blog.html" class='cta-button'>View Our Blog</a></div>
+        </section>
     </main>
-
-    <!-- FOOTER / CONTACT SECTION -->
     <footer id='contact'>
         <h2>Contact & Support</h2>
         <p style='max-width:600px; margin: 0 auto 30px auto;'>Have questions or want to become a sponsor? Reach out to us directly.</p>
-        <div id='contact-info'>
-            <p><strong>Email:</strong> <a href='mailto:arcknightsrocketry@gmail.com'>arcknightsrocketry@gmail.com</a></p>
-            <p><strong>Website:</strong> <a href='https://knightsrocketry.github.io' target='_blank'>knightsrocketry.github.io</a></p>
-            <p><strong>Phone:</strong> 123-456-7890</p>
-        </div>
+        <div id='contact-info'><p><strong>Email:</strong> <a href='mailto:arcknightsrocketry@gmail.com'>arcknightsrocketry@gmail.com</a></p><p><strong>Website:</strong> <a href='https://knightsrocketry.github.io' target='_blank'>knightsrocketry.github.io</a></p></div>
         <p style='margin-top: 40px; color: #888;'>© 2025 Knights Rocketry. All Rights Reserved.</p>
     </footer>
-
     <script>
-        // JS for Typing Animation
-        const typedTextSpan = document.getElementById('typed-text');
-        const words = ['Engineers.', 'Explorers.', 'Innovators.', 'Future Leaders.'];
-        const typingDelay = 100;
-        const erasingDelay = 50;
-        const newWordDelay = 2000;
-        let wordIndex = 0;
-        let charIndex = 0;
-
-        function type() {
-            if (charIndex < words[wordIndex].length) {
-                typedTextSpan.textContent += words[wordIndex].charAt(charIndex);
-                charIndex++;
-                setTimeout(type, typingDelay);
-            } else {
-                setTimeout(erase, newWordDelay);
-            }
-        }
-
-        function erase() {
-            if (charIndex > 0) {
-                typedTextSpan.textContent = words[wordIndex].substring(0, charIndex - 1);
-                charIndex--;
-                setTimeout(erase, erasingDelay);
-            } else {
-                wordIndex++;
-                if (wordIndex >= words.length) wordIndex = 0;
-                setTimeout(type, typingDelay + 500);
-            }
-        }
-        
         document.addEventListener('DOMContentLoaded', () => {
-            if(words.length) setTimeout(type, newWordDelay + 250);
+            const typedTextSpan = document.getElementById('typed-text');
+            if (typedTextSpan) {
+                const words = ['Engineers.', 'Explorers.', 'Innovators.', 'Future Leaders.'];
+                const typingDelay = 100, erasingDelay = 50, newWordDelay = 2000;
+                let wordIndex = 0, charIndex = 0;
+                function type() { if (charIndex < words[wordIndex].length) { typedTextSpan.textContent += words[wordIndex].charAt(charIndex); charIndex++; setTimeout(type, typingDelay); } else { setTimeout(erase, newWordDelay); } }
+                function erase() { if (charIndex > 0) { typedTextSpan.textContent = words[wordIndex].substring(0, charIndex - 1); charIndex--; setTimeout(erase, erasingDelay); } else { wordIndex++; if (wordIndex >= words.length) wordIndex = 0; setTimeout(type, typingDelay + 500); } }
+                setTimeout(type, newWordDelay + 250);
+            }
+            const sections = document.querySelectorAll('.scroll-section');
+            const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); } }); }, { threshold: 0.1 });
+            sections.forEach(section => { observer.observe(section); });
         });
-        
-        // JS for Scroll-in-View Animation
-        const sections = document.querySelectorAll('.scroll-section');
-        
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-        
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
     </script>
 </body>
 </html>

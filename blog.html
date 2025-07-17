@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Blog - Knights Rocketry</title>
+    <style>
+        :root { --deep-purple: #4B0082; --black: #000000; --light-lavender: #907cb6; --light-purple: #b6a6d3; --white: #FFFFFF; --purpleglow: #4a325e; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; margin: 0; padding: 0; background-color: var(--black); color: var(--white); overflow-x: hidden; }
+        .navbar { background-color: #000; position: fixed; width: 100%; top: 0; left: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; box-sizing: border-box; }
+        .navbar .brand { font-size: 1.5rem; font-weight: 600; color: var(--white); text-decoration: none; letter-spacing: 1px; }
+        .navbar .nav-links a { color: var(--white); text-decoration: none; margin: 0 15px; font-size: 1rem; font-weight: 400; transition: color 0.3s ease; }
+        .navbar .nav-links a:hover, .navbar .nav-links a.active { color: var(--light-lavender); }
+        .main-content { padding-top: 100px; padding-bottom: 60px; }
+        section { padding: 20px; max-width: 800px; margin: 0 auto; }
+        h1 { font-size: 2.5rem; color: var(--light-lavender); text-align: center; margin-bottom: 40px; }
+        .blog-post-link { display: block; text-decoration: none; color: inherit; margin-bottom: 25px; }
+        .blog-post { background-color: #1a1a1a; border-left: 5px solid var(--light-purple); padding: 25px; border-radius: 10px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .blog-post:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(145, 0, 255, 0.4); }
+        .blog-post h2 { margin-top: 0; font-size: 1.8rem; color: var(--light-purple); text-align: left; }
+        .blog-post .date { font-size: 0.9rem; color: #aaa; margin-bottom: 15px; display: block; }
+        .blog-post p { font-size: 1rem; line-height: 1.6; }
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid #333; }
+        #contact-info a { color: var(--light-lavender); text-decoration: none; transition: color 0.3s; }
+        #contact-info a:hover { color: var(--purpleglow); }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar">
+        <a href="index.html" class="brand">KNIGHTS ROCKETRY</a>
+        <div class="nav-links">
+            <a href="index.html#about">About</a>
+            <a href="index.html#sponsorship">Sponsorship</a>
+            <a href="blog.html" class="active">Blog</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </nav>
+    
+    <div class="main-content">
+        <section>
+            <h1>Latest Updates</h1>
+            
+            <!-- Instructions: To add a new post, create a new .html file in the 'posts' folder. -->
+            <!-- Then, copy the block below and change the href, title, date, and summary. -->
+            
+            <a href="posts/first-launch.html" class="blog-post-link">
+                <div class="blog-post">
+                    <h2>First successful test launch!</h2>
+                    <span class="date">October 26, 2025</span>
+                    <p>What a day! We conducted our first full-scale test launch of the 'Odyssey I' prototype. The rocket achieved stable flight, and the parachute deployed successfully. Click to read the full story...</p>
+                </div>
+            </a>
+            
+            <!-- Example of a second post link -->
+            <!-- <a href="posts/your-next-post.html" class="blog-post-link">
+                <div class="blog-post">
+                    <h2>Finalizing the Avionics Bay</h2>
+                    <span class="date">October 15, 2025</span>
+                    <p>This week, the team has been hard at work wiring and soldering components for the avionics bay. Click to see our progress...</p>
+                </div>
+            </a> -->
+
+        </section>
+    </div>
+
+    <footer id='contact'>
+        <h2>Contact & Support</h2>
+        <p style='max-width:600px; margin: 0 auto 30px auto;'>Have questions or want to become a sponsor? Reach out to us directly.</p>
+        <div id='contact-info'>
+            <p><strong>Email:</strong> <a href='mailto:arcknightsrocketry@gmail.com'>arcknightsrocketry@gmail.com</a></p>
+            <p><strong>Website:</strong> <a href='https://knightsrocketry.github.io' target='_blank'>knightsrocketry.github.io</a></p>
+        </div>
+        <p style='margin-top: 40px; color: #888;'>© 2025 Knights Rocketry. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

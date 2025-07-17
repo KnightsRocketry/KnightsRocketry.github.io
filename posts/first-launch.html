@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>First Test Launch - Knights Rocketry</title>
+    <style>
+        :root { --deep-purple: #4B0082; --black: #000000; --light-lavender: #907cb6; --light-purple: #b6a6d3; --white: #FFFFFF; --purpleglow: #4a325e; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; margin: 0; padding: 0; background-color: var(--black); color: var(--white); overflow-x: hidden; }
+        .navbar { background-color: #000; position: fixed; width: 100%; top: 0; left: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; box-sizing: border-box; }
+        .navbar .brand { font-size: 1.5rem; font-weight: 600; color: var(--white); text-decoration: none; letter-spacing: 1px; }
+        .navbar .nav-links a { color: var(--white); text-decoration: none; margin: 0 15px; font-size: 1rem; font-weight: 400; transition: color 0.3s ease; }
+        .navbar .nav-links a:hover, .navbar .nav-links a.active { color: var(--light-lavender); }
+        .main-content { padding-top: 100px; padding-bottom: 60px; }
+        .article-container { padding: 20px; max-width: 800px; margin: 0 auto; }
+        .article-header h1 { font-size: 2.8rem; color: var(--light-lavender); margin-bottom: 10px; }
+        .article-header .date { font-size: 1rem; color: #aaa; margin-bottom: 40px; display: block; }
+        .article-content { font-size: 1.1rem; line-height: 1.7; }
+        .article-content p { margin-bottom: 20px; }
+        .article-content img { max-width: 100%; height: auto; border-radius: 10px; margin: 20px 0; }
+        .back-link { display: inline-block; margin-top: 40px; color: var(--light-purple); text-decoration: none; font-weight: 500;}
+        .back-link:hover { text-decoration: underline; }
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid #333; }
+        #contact-info a { color: var(--light-lavender); text-decoration: none; transition: color 0.3s; }
+        #contact-info a:hover { color: var(--purpleglow); }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar">
+        <a href="../index.html" class="brand">KNIGHTS ROCKETRY</a>
+        <div class="nav-links">
+            <a href="../index.html#about">About</a>
+            <a href="../index.html#sponsorship">Sponsorship</a>
+            <a href="../blog.html" class="active">Blog</a>
+            <a href="../index.html#contact">Contact</a>
+        </div>
+    </nav>
+    
+    <div class="main-content">
+        <div class="article-container">
+            <header class="article-header">
+                <h1>First successful test launch!</h1>
+                <span class="date">Posted on October 26, 2025</span>
+            </header>
+            
+            <article class="article-content">
+                <p>What a day! We conducted our first full-scale test launch of the 'Odyssey I' prototype. The rocket achieved stable flight, and the parachute deployed successfully. We gathered crucial data that will help us fine-tune the design for the official competition. More details and photos to come!</p>
+                
+                <p>The primary goal of this test was to validate our airframe's stability and test the dual-deployment recovery system. After reaching an apogee of approximately 850 feet, the drogue parachute deployed perfectly, followed by the main parachute at 400 feet for a soft landing. We couldn't be happier with the results.</p>
+
+                <!-- You can add images like this -->
+                <!-- <img src="../images/your-image.jpg" alt="Description of image"> -->
+                
+                <p>A huge thank you to everyone who has supported us so far. This is a massive milestone, and we're more motivated than ever to prepare for the American Rocketry Challenge. Stay tuned for our next update where we'll analyze the flight data!</p>
+
+                <a href="../blog.html" class="back-link">← Back to all posts</a>
+            </article>
+        </div>
+    </div>
+
+    <footer id='contact'>
+        <h2>Contact & Support</h2>
+        <p style='max-width:600px; margin: 0 auto 30px auto;'>Have questions or want to become a sponsor? Reach out to us directly.</p>
+        <div id='contact-info'>
+            <p><strong>Email:</strong> <a href='mailto:arcknightsrocketry@gmail.com'>arcknightsrocketry@gmail.com</a></p>
+            <p><strong>Website:</strong> <a href='https://knightsrocketry.github.io' target='_blank'>knightsrocketry.github.io</a></p>
+        </div>
+        <p style='margin-top: 40px; color: #888;'>© 2025 Knights Rocketry. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
