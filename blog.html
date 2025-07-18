@@ -3,7 +3,7 @@
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <link rel="icon" type="image/png" href="images\BCO.webp">
+    <link rel="icon" type="image/png" href="images/BCO.webp">
     <title>Blog - Knights Rocketry</title>
     <style>
         :root { --deep-purple: #4B0082; --black: #000000; --light-lavender: #907cb6; --light-purple: #b6a6d3; --white: #FFFFFF; --purpleglow: #4a325e; }
@@ -15,6 +15,16 @@
         .main-content { padding-top: 100px; padding-bottom: 60px; }
         section { padding: 20px; max-width: 800px; margin: 0 auto; }
         h1 { font-size: 2.5rem; color: var(--light-lavender); text-align: center; margin-bottom: 40px; }
+        
+        /* UPDATED: Signup Form Section Styles */
+        .signup-section { background-color: #1a1a1a; padding: 30px; border-radius: 10px; margin-bottom: 40px; text-align: center; }
+        .signup-section h2 { margin-top: 0; font-size: 1.8rem; color: var(--light-purple); }
+        .signup-form { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 20px; }
+        .signup-form input { width: 100%; max-width: 400px; padding: 12px; border-radius: 5px; border: 1px solid #444; background-color: #222; color: var(--white); font-size: 1rem; box-sizing: border-box; }
+        .signup-form button { width: 100%; max-width: 424px; padding: 12px 20px; border: none; border-radius: 5px; background-color: var(--deep-purple); color: var(--white); font-size: 1rem; cursor: pointer; transition: background-color 0.3s ease; }
+        .signup-form button:hover { background-color: var(--light-lavender); color: var(--deep-purple); }
+        #form-status { margin-top: 15px; color: var(--light-purple); font-weight: 500; min-height: 20px; }
+
         .blog-post-link { display: block; text-decoration: none; color: inherit; margin-bottom: 25px; }
         .blog-post { background-color: #1a1a1a; border-left: 5px solid var(--light-purple); padding: 25px; border-radius: 10px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .blog-post:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(145, 0, 255, 0.4); }
@@ -41,9 +51,20 @@
     <div class="main-content">
         <section>
             <h1>Latest Updates</h1>
-            
-            <!-- Instructions: To add a new post, create a new .html file in the 'posts' folder. -->
-            <!-- Then, copy the block below and change the href, title, date, and summary. -->
+
+            <div class="signup-section">
+                <h2>Get Notified of New Posts</h2>
+                <p>Enter your name and email below to get an update when a new blog post drops!</p>
+                <form id="subscribe-form">
+                    <div class="signup-form">
+                        <!-- NEW: Name Input Field -->
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email Address" required>
+                        <button type="submit">Subscribe</button>
+                    </div>
+                    <div id="form-status"></div>
+                </form>
+            </div>
             
             <a href="posts/website-launched.html" class="blog-post-link">
                 <div class="blog-post">
@@ -52,15 +73,6 @@
                     <p>We launched our Knights Rocketry website today!</p>
                 </div>
             </a>
-            
-            <!-- Example of a second post link -->
-            <!-- <a href="posts/your-next-post.html" class="blog-post-link">
-                <div class="blog-post">
-                    <h2>Finalizing the Avionics Bay</h2>
-                    <span class="date">October 15, 2025</span>
-                    <p>This week, the team has been hard at work wiring and soldering components for the avionics bay. Click to see our progress...</p>
-                </div>
-            </a> -->
 
         </section>
     </div>
@@ -74,6 +86,38 @@
         </div>
         <p style='margin-top: 40px; color: #888;'>© 2025 Knights Rocketry. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwcqRm3hE593UK2joxQz59N65dNdZXBKYJ1AYujLNaGIrb43C9_6B_0VbBj7lkuTGpPNA/exec'; // IMPORTANT: Use your same Web App URL
+        const form = document.getElementById('subscribe-form');
+        const statusDiv = document.getElementById('form-status');
+        const submitButton = form.querySelector('button');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            statusDiv.textContent = 'Subscribing...';
+            submitButton.disabled = true;
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => response.json())
+                .then(data => {
+                    if (data.result === 'success') {
+                        statusDiv.textContent = 'Thanks for subscribing!';
+                        form.reset();
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    statusDiv.textContent = 'Oops! Something went wrong.';
+                })
+                .finally(() => {
+                    submitButton.disabled = false;
+                    setTimeout(() => { statusDiv.textContent = ''; }, 5000); // Clear message after 5 seconds
+                });
+        });
+    </script>
 
 </body>
 </html>
