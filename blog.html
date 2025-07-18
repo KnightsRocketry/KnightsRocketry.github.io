@@ -16,7 +16,7 @@
         section { padding: 20px; max-width: 800px; margin: 0 auto; }
         h1 { font-size: 2.5rem; color: var(--light-lavender); text-align: center; margin-bottom: 40px; }
         
-        /* UPDATED: Signup Form Section Styles */
+        /* Signup Form Section Styles */
         .signup-section { background-color: #1a1a1a; padding: 30px; border-radius: 10px; margin-bottom: 40px; text-align: center; }
         .signup-section h2 { margin-top: 0; font-size: 1.8rem; color: var(--light-purple); }
         .signup-form { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 20px; }
@@ -24,6 +24,8 @@
         .signup-form button { width: 100%; max-width: 424px; padding: 12px 20px; border: none; border-radius: 5px; background-color: var(--deep-purple); color: var(--white); font-size: 1rem; cursor: pointer; transition: background-color 0.3s ease; }
         .signup-form button:hover { background-color: var(--light-lavender); color: var(--deep-purple); }
         #form-status { margin-top: 15px; color: var(--light-purple); font-weight: 500; min-height: 20px; }
+        /* NEW: Spam folder note style */
+        .spam-note { font-size: 0.8rem; color: #888; margin-top: 15px; }
 
         .blog-post-link { display: block; text-decoration: none; color: inherit; margin-bottom: 25px; }
         .blog-post { background-color: #1a1a1a; border-left: 5px solid var(--light-purple); padding: 25px; border-radius: 10px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
@@ -31,6 +33,9 @@
         .blog-post h2 { margin-top: 0; font-size: 1.8rem; color: var(--light-purple); text-align: left; }
         .blog-post .date { font-size: 0.9rem; color: #aaa; margin-bottom: 15px; display: block; }
         .blog-post p { font-size: 1rem; line-height: 1.6; }
+        /* NEW: "Read more" link style */
+        .read-more { font-size: 1rem; font-weight: bold; color: var(--light-purple); margin-top: 20px; display: block; }
+        
         footer { text-align: center; padding: 40px 20px; border-top: 1px solid #333; }
         #contact-info a { color: var(--light-lavender); text-decoration: none; transition: color 0.3s; }
         #contact-info a:hover { color: var(--purpleglow); }
@@ -57,12 +62,13 @@
                 <p>Enter your name and email below to get an update when a new blog post drops!</p>
                 <form id="subscribe-form">
                     <div class="signup-form">
-                        <!-- NEW: Name Input Field -->
                         <input type="text" name="name" placeholder="Your Name" required>
                         <input type="email" name="email" placeholder="Your Email Address" required>
                         <button type="submit">Subscribe</button>
                     </div>
                     <div id="form-status"></div>
+                    <!-- NEW: Spam folder note -->
+                    <p class="spam-note">If you don't receive emails, please check your spam or junk folder.</p>
                 </form>
             </div>
             
@@ -70,7 +76,9 @@
                 <div class="blog-post">
                     <h2>Our Website Launched!</h2>
                     <span class="date">July 17, 2025</span>
-                    <p>We launched our Knights Rocketry website today!</p>
+                    <p>We launched our Knights Rocketry website today! This will be the central hub for all our updates, progress, and sponsorship information as we journey through the American Rocketry Challenge.</p>
+                    <!-- NEW: "Read more" link -->
+                    <span class="read-more">Click to read more...</span>
                 </div>
             </a>
 
@@ -88,7 +96,7 @@
     </footer>
 
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwcqRm3hE593UK2joxQz59N65dNdZXBKYJ1AYujLNaGIrb43C9_6B_0VbBj7lkuTGpPNA/exec'; // IMPORTANT: Use your same Web App URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzslH0eXHbdBtOTUcf50NrV4WUWrj84BQhWkrKGLjhr_0k_YcUK1bBQg88Gsx_sw4q_PA/exec'; // IMPORTANT: Use your same Web App URL
         const form = document.getElementById('subscribe-form');
         const statusDiv = document.getElementById('form-status');
         const submitButton = form.querySelector('button');
