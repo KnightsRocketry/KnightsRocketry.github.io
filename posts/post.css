@@ -1,0 +1,51 @@
+.main-content {
+  padding-top: 100px;
+  padding-bottom: 60px;
+}
+
+.article-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.article-header h1 {
+  font-size: 2.8rem;
+  color: var(--light-lavender);
+  margin-bottom: 10px;
+}
+
+.article-header .date {
+  font-size: 1rem;
+  color: #aaa;
+  margin-bottom: 40px;
+  display: block;
+}
+
+.article-content {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.article-content p {
+  margin-bottom: 20px;
+}
+
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 40px;
+  color: var(--light-purple);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
