@@ -1,0 +1,79 @@
+---
+import BasePageLayout from "../layouts/BasePageLayout.astro";
+
+import "../styles/blog.css";
+---
+
+<BasePageLayout pageTitle="Blog">
+  <section class="scroll-section">
+    <h1>Latest Updates</h1>
+
+    <div class="signup-section">
+      <h2>Get Notified of New Posts</h2>
+      <p>
+        Enter your name and email below to get an update when a new blog post
+        drops!
+      </p>
+
+      <form id="subscribe-form">
+        <div class="signup-form">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email Address"
+            required
+          />
+          <button type="submit">Subscribe</button>
+        </div>
+        <div id="form-status"></div>
+        <p class="spam-note">
+          If you don't receive emails, please check your spam or junk folder.
+        </p>
+      </form>
+    </div>
+
+    <a href="/posts/first-launch/first-launch.html" class="blog-post-link">
+      <div class="blog-post">
+        <h2>First Rocket Launch: Nebula One Rocket Launch</h2>
+        <span class="date">July 26, 2025</span>
+        <p>
+          Success! Nebula One has officially flown, completing three successful
+          launches today after the team performed a last-minute fix to the fins
+          before launch.
+        </p>
+        <span class="read-more">Click to read more...</span>
+      </div>
+    </a>
+
+    <a href="/posts/first-rocket/first-rocket.html" class="blog-post-link">
+      <div class="blog-post">
+        <h2>Our First Rocket: Nebula One</h2>
+        <span class="date">July 25, 2025</span>
+        <p>
+          The build is complete! Our first-ever rocket, the Nebula One, was
+          built from a "Big Bertha" model and is ready for its maiden launch on
+          July 26th at the DARS Gunter field.
+        </p>
+        <span class="read-more">Click to read more...</span>
+      </div>
+    </a>
+
+    <a href="/posts/website-launched.html" class="blog-post-link">
+      <div class="blog-post">
+        <h2>Our Website Launched!</h2>
+        <span class="date">July 17, 2025</span>
+        <p>
+          We launched our Knights Rocketry website today! This will be the
+          central hub for all our updates, progress, and sponsorship information
+          as we journey through the American Rocketry Challenge.
+        </p>
+        <span class="read-more">Click to read more...</span>
+      </div>
+    </a>
+  </section>
+
+  <script>
+    import "../scripts/loadAnimations.js";
+  </script>
+</BasePageLayout>

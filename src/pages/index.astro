@@ -1,16 +1,134 @@
 ---
+import BasePageLayout from "../layouts/BasePageLayout.astro";
+import AboutGrid from "../components/AboutGrid.astro";
 
+import "../styles/index.css";
+
+const aboutUsCards = [
+  {
+    title: "Who We Are?",
+    content: `Knights Rocketry is a rising American Rocketry Challenge (ARC) team from
+      the DFW metroplex. While new to rocketry, our team builds on a strong STEM
+      foundation through years of involvement in the FIRST Robotics Competition
+      (FRC), where our robotics team has qualified for the FRC World
+      Championship in past seasons.`,
+  },
+  {
+    title: "What is ARC?",
+    content: `The American Rocketry Challenge is the world's largest student rocket
+      contest. Teams design, build, and launch rockets to meet specific altitude
+      and flight duration goals, providing hands-on experience in aerospace
+      engineering.`,
+  },
+  {
+    title: "How Can You Help?",
+    content: `Sponsoring our team supports STEM education and gives your brand national
+      visibility. Your logo on our rocket and shirts shows your commitment to
+      innovation and inspiring the next generation of leaders.`,
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BasePageLayout pageTitle="Home">
+  <header class="hero">
+    <img
+      src="/BCO.webp"
+      alt="Knights Rocketry Design"
+      style="width: 500px; max-width: 90%; height: auto; display: block;"
+    />
+    <h1 class="typing-text">
+      <span id="typing-prefix">We Are </span><span id="typed-text"></span><span
+        class="cursor"></span>
+    </h1>
+    <a href="#sponsorship" class="cta-button">Sponsor Our Mission</a>
+  </header>
+
+  <main>
+    <section id="about" class="scroll-section">
+      <h2>About The Team</h2>
+      <AboutGrid cards={aboutUsCards} />
+    </section>
+
+    <section id="challenge" class="scroll-section">
+      <h2>The Challenge</h2>
+      <div class="challenge-content">
+        <p>
+          This year's goal involves designing a rocket to carry two raw eggs to
+          a specific altitude, returning it to Earth safely within a precise
+          time window. This complex task requires careful design, simulation,
+          and rigorous real-world testing to succeed.
+        </p>
+        <a href="https://rocketcontest.org/" target="_blank" class="cta-button"
+          >Official ARC Website</a
+        >
+      </div>
+    </section>
+
+    <section id="sponsorship" class="scroll-section">
+      <h2>Sponsorship Tiers</h2>
+      <div class="sponsorship-grid">
+        <div class="tier-card">
+          <div>
+            <h3 class="bronze">Bronze</h3><h4 class="tier-price">$50-$99</h4>
+            <ul>
+              <li>Small-sized logo on shirt</li><li>
+                Your company's logo featured on our official team website.
+              </li><li>
+                A thank-you shout-out on our team's social media platforms.
+              </li>
+            </ul>
+          </div><a href="#contact" class="cta-button">Sponsor Now</a>
+        </div>
+        <div class="tier-card">
+          <div>
+            <h3 class="gold">Gold</h3><h4 class="tier-price">$100-$499</h4>
+            <ul>
+              <li>All Bronze Tier benefits.</li><li>
+                Medium-sized logo on banner
+              </li><li>Medium-sized logo on shirt</li><li>
+                Medium-sized logo on our competition rocket.
+              </li>
+            </ul>
+          </div><a href="#contact" class="cta-button">Sponsor Now</a>
+        </div>
+        <div class="tier-card">
+          <div>
+            <h3 class="platinum">Platinum</h3><h4 class="tier-price">$500+</h4>
+            <ul>
+              <li>All Gold Tier benefits.</li><li>
+                Prominent logo on banner
+              </li><li>Rocket showcase at private events</li><li>
+                Large logo in a prominent position on our rocket.
+              </li><li>
+                A framed team photo and signed certificate of appreciation.
+              </li>
+            </ul>
+          </div><a href="#contact" class="cta-button">Sponsor Now</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="sponsors" class="scroll-section">
+      <h2>Our Sponsors</h2><div class="sponsors-placeholder">
+        <p>
+          We are incredibly grateful for the support of our sponsors. Your logo
+          could be here!
+        </p>
+      </div>
+    </section>
+
+    <section id="blog-cta" class="scroll-section">
+      <h2>Latest Updates</h2><div class="blog-cta-content">
+        <p>
+          Follow our journey from design to launch! We post regular updates on
+          our progress, challenges, and successes.
+        </p><a href="blog.html" class="cta-button">View Our Blog</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    import "../scripts/loadAnimations.js";
+    import "../scripts/typedText.js";
+  </script>
+</BasePageLayout>

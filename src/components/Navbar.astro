@@ -1,0 +1,52 @@
+<nav class="navbar">
+  <a href="index.html" class="brand">KNIGHTS ROCKETRY</a>
+  <div class="nav-links">
+    <a href="/#about">About</a>
+    <a href="/#sponsorship">Sponsorship</a>
+    <a href="/blog.html">Blog</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    box-sizing: border-box;
+
+    backdrop-filter: blur(10px); /* main blur */
+    -webkit-backdrop-filter: blur(10px);
+
+    mask-image: linear-gradient(to bottom, black 10%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  }
+
+  .navbar .brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 1px;
+  }
+
+  .navbar .nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: color 0.3s ease;
+  }
+
+  .navbar .nav-links a:hover,
+  .navbar .nav-links a.active {
+    color: var(--light-lavender);
+  }
+</style>
