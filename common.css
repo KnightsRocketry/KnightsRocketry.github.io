@@ -62,6 +62,7 @@ html {
 }
 
 footer {
+  background-color: var(--black); 
   text-align: center;
   padding: 40px 20px;
   border-top: 1px solid #333;
@@ -75,4 +76,53 @@ footer {
 
 #contact-info a:hover {
   color: var(--purpleglow);
+}
+
+.contact-form-section {
+    background-color: #1a1a1a;
+    padding: 40px 30px;
+    border-radius: 10px;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#contact-form input,
+#contact-form textarea {
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #222;
+    color: var(--white);
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+#contact-form button {
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--deep-purple);
+    color: var(--white);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#contact-form button:hover {
+    background-color: var(--light-lavender);
+    color: var(--deep-purple);
+}
+
+#contact-form-status {
+    margin-top: 15px;
+    color: var(--light-purple);
+    font-weight: 500;
+    min-height: 20px;
+    text-align: center;
 }

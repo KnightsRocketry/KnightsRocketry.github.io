@@ -83,11 +83,62 @@
         </section>
     </main>
     <footer id='contact'>
-        <h2>Contact & Support</h2>
-        <p style='max-width:600px; margin: 0 auto 30px auto;'>Have questions or want to become a sponsor? Reach out to us directly.</p>
-        <div id='contact-info'><p><strong>Email:</strong> <a href='mailto:arcknightsrocketry@gmail.com'>arcknightsrocketry@gmail.com</a></p><p><strong>Website:</strong> <a href='https://knightsrocketry.github.io' target='_blank'>knightsrocketry.github.io</a></p></div>
-        <p style='margin-top: 40px; color: #888;'>© 2025 Knights Rocketry. All Rights Reserved.</p>
-    </footer>
+    <h2>Contact Us</h2>
+    <div class="contact-form-section">
+        <p style='text-align:center; max-width:600px; margin: 0 auto 30px auto;'>Have questions or want to become a sponsor? Fill out the form below to send us an email directly.</p>
+        <form id="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email Address" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+            <div id="contact-form-status"></div>
+        </form>
+    </div>
+
+    <!-- Your original footer info is preserved below the form -->
+    <div id='contact-info' style="margin-top: 40px;">
+        <p>Or reach out directly:</p>
+        <p><strong>Email:</strong> <a href='mailto:arcknightsrocketry@gmail.com'>arcknightsrocketry@gmail.com</a></p>
+        <p><strong>Website:</strong> <a href='https://knightsrocketry.github.io' target='_blank'>knightsrocketry.github.io</a></p>
+    </div>
+    
+    <p style='margin-top: 40px; color: #888;'>© 2025 Knights Rocketry. All Rights Reserved.</p>
+    <!-- JavaScript for the Contact Form -->
+    <script>
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            const contactStatus = document.getElementById('contact-form-status');
+            const contactButton = contactForm.querySelector('button');
+
+            const contactScriptURL = 'https://script.google.com/macros/s/AKfycby9tr2SgcIN-ulmPTy0TPEfpvLYk7d0xJVPgA8NHYroHsitcaDbhVoU9uNVd7fttP10/exec';
+
+            contactForm.addEventListener('submit', e => {
+                e.preventDefault();
+                contactStatus.textContent = 'Sending...';
+                contactButton.disabled = true;
+
+                fetch(contactScriptURL, { method: 'POST', body: new FormData(contactForm)})
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.result === 'success') {
+                            contactStatus.textContent = 'Message Sent! Thank you.';
+                            contactForm.reset();
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error!', error.message);
+                        contactStatus.textContent = 'Oops! Something went wrong. Please try again.';
+                    })
+                    .finally(() => {
+                        contactButton.disabled = false;
+                        setTimeout(() => { contactStatus.textContent = ''; }, 6000);
+                    });
+            });
+        }
+    </script>
+</footer>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const typedTextSpan = document.getElementById('typed-text');
